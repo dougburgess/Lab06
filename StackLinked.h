@@ -6,71 +6,71 @@
 template < class T >
 class StackLinked
 {
-   private:
-      NextNode<T>* top;
-      int sze;  // number of items in the stack
+private:
+    NextNode<T>* top;
+    int sze;  // number of items in the stack
 
-   public:
-      StackLinked();
-      ~StackLinked();
-      bool isEmpty();
-      int size();
-      void popAll();
-      T* pop();
-      void push(T* item);
-      T* peek();
+public:
+    StackLinked();
+    ~StackLinked();
+    bool isEmpty();
+    int size();
+    void popAll();
+    T* pop();
+    void push(T* item);
+    T* peek();
 };
 
 template < class T >
 StackLinked<T>::StackLinked()
 {
-   top = NULL;
-   sze = 0;
+    top = NULL;
+    sze = 0;
 }
 
 template < class T >
 StackLinked<T>::~StackLinked()
 {
-   popAll();
+    popAll();
 }
 
 template < class T >
 bool StackLinked<T>::isEmpty()
 {
-   return sze == 0;
+    return sze == 0;
 }
 
 template < class T >
 int StackLinked<T>::size()
 {
-   return sze;
+    return sze;
 }
 
 template < class T >
 void StackLinked<T>::popAll()
 {
-   //loop over the stack, deleting the nodes
-   //the actual items are not deleted
-   if (sze == 0) return;
+    //loop over the stack, deleting the nodes
+    //the actual items are not deleted
+    if (sze == 0) return;
 
-   NextNode<T>* curr = top;
-   NextNode<T>* prev = NULL;
-   while (curr != NULL)
-   {
-      prev = curr;
-      curr = curr->getNext();
-      prev->setNext(NULL);
-      delete prev;
-   }
+    NextNode<T>* curr = top;
+    NextNode<T>* prev = NULL;
+    while (curr != NULL)
+    {
+        prev = curr;
+        curr = curr->getNext();
+        prev->setNext(NULL);
+        delete prev;
+    }
 }
 
 template < class T >
 T* StackLinked<T>::peek()
 {
-   T* item = NULL;
-   //DO THIS
+    T* item = NULL;
+    //DO THIS
 
-   // StackLinked.peek();
+    // StackLinked.peek();
 
 
 
@@ -79,9 +79,9 @@ T* StackLinked<T>::peek()
 template < class T >
 void StackLinked<T>::push(T* item)
 {
-   //DO THIS
+    //DO THIS
 
-   // StackLinked.push(T*item);
+    // StackLinked.push(T*item);
 
 
 }
@@ -89,11 +89,11 @@ void StackLinked<T>::push(T* item)
 template < class T >
 T* StackLinked<T>::pop()
 {
-   if (sze == 0) return NULL;
+    if (sze == 0) return NULL;
 
-   //DO THIS
+    //DO THIS
 
-   // StackLinked.pop(T*item);
+    // StackLinked.pop(T*item);
 
 
 }

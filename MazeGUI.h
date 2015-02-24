@@ -7,18 +7,18 @@
 class MazeGUI : public DrawPanel, Update
 {
 
-   private:
-      Maze* maze;
+    private:
+        Maze* maze;
 
-   public:
-      MazeGUI(int width, int height, Maze* maze);
-      virtual ~MazeGUI();
-      virtual void update();       
-      virtual void on_maze_button_click_event();
+    public:
+        MazeGUI(int width, int height, Maze* maze);
+        virtual ~MazeGUI();
+        virtual void update();
+        virtual void on_maze_button_click_event();
 
-      void startMazeThread();
-      void solve();
+        void startMazeThread();
+        void solve();
 
 };
 
-#endif 
+#endif
