@@ -80,7 +80,7 @@ bool Maze::isSolved(Cell* curr_cell, StackLinked<Cell>* stack)
     {
 
 
-        //set the maze location to TRIED
+        //set the maze location to PATH
 
 
         //push curr_cell
@@ -190,7 +190,7 @@ bool Maze::traverse()
 
 void Maze::mouseClicked(int x, int y)
 {
-    
+
 }
 
 void Maze::draw(Cairo::RefPtr<Cairo::Context> cr, int width, int height)
