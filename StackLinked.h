@@ -70,7 +70,7 @@ T* StackLinked<T>::peek()
    T* item = NULL;
    //DO THIS
 
-
+   // StackLinked.peek();
 
 
 
@@ -81,7 +81,7 @@ void StackLinked<T>::push(T* item)
 {
    //DO THIS
 
-
+   // StackLinked.push(T*item);
 
 
 }
@@ -93,7 +93,7 @@ T* StackLinked<T>::pop()
 
    //DO THIS
 
-
+   // StackLinked.pop(T*item);
 
 
 }
