@@ -8,7 +8,7 @@ class StackLinked
 {
 private:
     NextNode<T>* top;
-    int sze;  // number of items in the stack
+    int sze;  // Number of items in the stack
 
 public:
     StackLinked();

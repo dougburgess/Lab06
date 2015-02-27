@@ -69,12 +69,12 @@ bool Maze::isSolved(Cell* curr_cell, StackLinked<Cell>* stack)
     int row = curr_cell->getRow();
     int col = curr_cell->getCol();
 
-    // Have you solved the maze? (check that we are at the bottom right maze location and that it is a SPACE
+    // Have you solved the maze? (Check that we are at the bottom right maze location and that it is a SPACE
     if ((row==height && col==width) && (maze->getElement(row, col)==SPACE))
     {
         // Set the maze location to TRIED
         maze->setElement(row, col, TRIED);
-        
+
         // Push curr_cell
         stack->push(curr_cell);
 
@@ -126,7 +126,7 @@ bool Maze::traverse()
         Cell* top_cell = processBackTrack(&stack);
         if (top_cell == NULL) break;  // No solution (back tracked all the way to the beginning)
 
-        // Call a method in the Cell class to give you a new Cell in a new direction relative to top_cell (initially, DOWN)
+        // Call a method in the Cell class to give you a new Cell in a new direction relative to top_cell (Initially, DOWN)
 
         // DO THIS
         Cell* curr_cell = top_cell->nextCell();
@@ -144,7 +144,7 @@ bool Maze::traverse()
         if (maze->getElement(row, col)==SPACE)
         {
             // Update the maze location to TRIED
-            // Put the cell on the stack (move forward through the maze)
+            // Put the cell on the stack (Move forward through the maze)
             maze->setElement(row, col, TRIED);
             stack.push(curr_cell);
 
