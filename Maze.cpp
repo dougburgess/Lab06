@@ -46,20 +46,14 @@ Cell* Maze::processBackTrack(StackLinked<Cell>* stack)
     // top_cell is NULL if the stack is empty
     // top_cell's direction is DEAD_END if you need to keep backtracking
 
-    while (                                        )  // Need to back track
+    while (!stack->isEmpty()&& top_cell->getDir()==DEAD_END)  //need to back track
     {
-
-
-
         // Remove the cell and set the maze location to BACKTRACK (the maze is a Matrix)
-
-
+        delete stack->pop();
+        maze->setElement(top_cell->getRow(), top_cell->getCol(), BACKTRACK);
 
         // Look at the next cell
-
-
-
-
+        top_cell = stack->peek();
 
         Sleep(75);      // Slow down the maze traversal
         gui->update();  // Update whenever the color of a cell has been changed
@@ -71,30 +65,26 @@ Cell* Maze::processBackTrack(StackLinked<Cell>* stack)
 bool Maze::isSolved(Cell* curr_cell, StackLinked<Cell>* stack)
 {
     // DO THIS
-    // get row and col from curr_cell
-
-    int x = curr_cell->getRow();
-    int y = curr_cell->getCol();
-
+    // Get row and col from curr_cell
+    int row = curr_cell->getRow();
+    int col = curr_cell->getCol();
 
     // Have you solved the maze? (check that we are at the bottom right maze location and that it is a SPACE
-    if ( x == height && y == width && maze->getElement( x, y ) == SPACE )
+    if ((row==height && col==width) && (maze->getElement(row, col)==SPACE))
     {
-
-
-        // Set the maze location to PATH
-
-
-        // push curr_cell
-
+        // Set the maze location to TRIED
+        maze->setElement(row, col, TRIED);
+        
+        // Push curr_cell
+        stack->push(curr_cell);
 
         gui->update();
         // Return the appropriate boolean
-
+        return true;
     }
 
-
     // Return the appropriate boolean
+    return false;
 }
 
 // Backing through the maze, setting the solution color to PATH
@@ -102,18 +92,19 @@ void Maze::processSolution(StackLinked<Cell>* stack)
 {
     // DO THIS
     // The stack has the solution path stored
-    while( !stack->isEmpty() )
-    // Get the next cell from the stack
-    Cell* powerHouse = stack->pop();
+    Cell* curr_cell;
+    while(!stack->isEmpty())
+    {
+        // Get the next cell from the stack
+        curr_cell = stack->pop();
 
-    // Update the maze location to PATH
-    int x = powerHouse->getRow();
-    int y = powerHouse->getCol();
+        // Update the maze location to PATH
+        maze->setElement(curr_cell->getRow(), curr_cell->getCol(), PATH);
 
-    maze->setElement( x, y, PATH );
+        delete curr_cell;
 
-    gui->update();
-}
+        gui->update();
+    }
 }
 
 bool Maze::traverse()
@@ -138,11 +129,7 @@ bool Maze::traverse()
         // Call a method in the Cell class to give you a new Cell in a new direction relative to top_cell (initially, DOWN)
 
         // DO THIS
-        Cell* curr_cell =
-
-
-
-
+        Cell* curr_cell = top_cell->nextCell();
 
         // Does this new Cell solve the maze?
         done = isSolved(curr_cell, &stack);
@@ -150,20 +137,16 @@ bool Maze::traverse()
 
         // DO THIS
         // Get the row and col from curr_cell
-        int row =
-        int col =
+        int row = curr_cell->getRow();
+        int col = curr_cell->getCol();
 
         // Check that the current maze location corresponds to SPACE, otherwise delete it
-        if (                                           )
+        if (maze->getElement(row, col)==SPACE)
         {
             // Update the maze location to TRIED
             // Put the cell on the stack (move forward through the maze)
-
-
-
-
-
-
+            maze->setElement(row, col, TRIED);
+            stack.push(curr_cell);
 
             Sleep(75);  // Slow down the maze traversal
             gui->update();
@@ -172,8 +155,7 @@ bool Maze::traverse()
         {
             // DO THIS
             // Delete the cell
-
-
+            delete curr_cell;
         }
     }
 
@@ -192,7 +174,7 @@ bool Maze::traverse()
 
 void Maze::mouseClicked(int x, int y)
 {
-
+    // Pretty sure this is supposed to be empty
 }
 
 void Maze::draw(Cairo::RefPtr<Cairo::Context> cr, int width, int height)
